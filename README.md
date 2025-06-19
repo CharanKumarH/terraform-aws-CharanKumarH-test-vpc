@@ -16,8 +16,7 @@ This Terraform module creates an AWS VPC with a given CIDR block. It also provis
 ---
 
 ## Usage
-
-```hcl
+```
 module "vpc" {
   source = "./module/vpc"
 
