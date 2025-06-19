@@ -27,14 +27,14 @@ module "vpc" {
   subnet_config = {
     public_subnet = {
       cidr_block = "10.0.0.0/24"
-      az         = "eu-north-1a"
+      az         = "ap-south-1a"
       #To set the subnet as public, default is private
       public     = true
     }
 
     private_subnet = {
       cidr_block = "10.0.1.0/24"
-      az         = "eu-north-1b"
+      az         = "ap-south-1b"
     }
   }
 }

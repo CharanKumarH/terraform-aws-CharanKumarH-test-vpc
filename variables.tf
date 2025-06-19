@@ -11,7 +11,7 @@ variable "vpc_config" {
 }
 
 variable "subnet_config" {
-  # sub1={cidr=.. az=..} sub2={} sub3={}
+  
   description = "Get the CIDR and AZ for the subnets"
   type = map(object({
     cidr_block = string
@@ -19,7 +19,7 @@ variable "subnet_config" {
     public     = optional(bool, false)
   }))
   validation {
-    # sub1={cidr=} sub2={cidr=..}, [true, true, false]
+    
     condition     = alltrue([for config in var.subnet_config : can(cidrnetmask(config.cidr_block))])
     error_message = "Invalid CIDR Format"
   }
