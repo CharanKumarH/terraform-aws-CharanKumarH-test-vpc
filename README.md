@@ -19,24 +19,23 @@ This Terraform module creates an AWS VPC with a given CIDR block. It also provis
 
 ```hcl
 module "vpc" {
-  source = "git::https://github.com/<your-org>/terraform-aws-vpc.git?ref=v1.0.0"
+  source = "./module/vpc"
 
   vpc_config = {
-    name       = "my-vpc"
     cidr_block = "10.0.0.0/16"
+    name       = "your_vpc_name"
   }
-
   subnet_config = {
-    public-1 = {
-      Name       = "subnet-1"
-      cidr_block = "10.0.1.0/24"
-      az         = "us-east-1a"
+    public_subnet = {
+      cidr_block = "10.0.0.0/24"
+      az         = "eu-north-1a"
+      #To set the subnet as public, default is private
       public     = true
-    },
-    private-1 = {
-      Name       = "subnet-2"
-      cidr_block = "10.0.2.0/24"
-      az         = "us-east-1b"
+    }
+
+    private_subnet = {
+      cidr_block = "10.0.1.0/24"
+      az         = "eu-north-1b"
     }
   }
 }
